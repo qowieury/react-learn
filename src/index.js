@@ -15,6 +15,15 @@ class TodoBox extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      userId : nextProps.userId,
+      title : nextProps.title,
+      changedUserId : nextProps.userId,
+      changedTitle : nextProps.title
+    })
+  }
+
   toggleEdit() {
     console.log("TodoBox.toggleEdit()")
     this.setState({
@@ -114,10 +123,11 @@ class TodoApp extends React.Component {
     console.log("TodoApp.removeTodoFromList()")
     let list = this.state.todoList;
     list.splice(i,1);
+    console.log(list)
     this.setState({
       todoList : list
     })
-    
+     
   }
 
   render() {
